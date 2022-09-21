@@ -1,25 +1,125 @@
 <!doctype html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <title>CSE 204 - Assignment 01 Hello World</title>
+        <title>GIS tutorial</title>
+        <link href="style.css" type="text/css" rel="stylesheet">
 
     </head>
     <body>
+    
 
-        <h1>Hello world!</h1>
+        <ol id="sidebar">
+            <nav>
+            <li><a href="#Setup">Setup</a></li>
+            <li><a href="#JOSM">JOSM</a></li>
+            <li><a href="#QGIS">QGIS</a></li>
+            <li><a href="#QGIS TOPOGRAPHY">QGIS topography</a></li>
+            </nav>
+        </ol>
+
+
+    <p id="content">
+        <h1>GIS OSM tutorial</h1>
         <p>
-            <strong>My name is:</strong>
-            *** YOUR NAME HERE ***
-        </p>
-        <p>
-            <strong>My email address is:</strong>
-            *** YOUR EMAIL HERE ***
-        </p>
-        <p>
-            <strong>I am taking this class because:</strong>
-            *** WHY HERE ***
+            This tutorial will cover data collection from OSM to importing in Rhino.
         </p>
 
+    
+        <h2 id="Setup">1.Setup</h2>
+            <p>
+                The process will require the use of <a href="https://josm.openstreetmap.de/">JOSM </a>and <a href="https://qgis.org/en/site/">QGIS</a>. Use the latest version of both.
+            </p>
+
+        <h2 id="JOSM">2.JOSM</h2>
+
+            <p>
+                After both are installed, open JOSM and click on the <em>green arrow</em> on the top left.
+            </p>
+            <img src="tutorial1.png" alt="JOSM download map" width="800" height="420">
+            <p>
+                A popup with a map will open, navigate to the desired area and drag over the map to select a region to download. Area selections are limited to 50,000 nodes and will fail if the area contains too many. (nodes include everything from buildings to stop signs, trees, etc.) Due to the limited area of the seleciton, the process will need to be repeated until the extent of the city is reached.
+            </p>
+            <img src="tutorial2.png" alt="JOSM popup map" width="800" height="420">
+            <p>
+                After the city basemap is collected, the roadmap will need to be seperated for extraction. Nagivate to the search on the right.
+            </p>
+            <img src="tutorial3.png" alt="JOSM popup map" width="800" height="420">
+            <p>
+                For our purposes, we need to collect and seperate the layers listed below. Search for each in the "presets" search bar. All non-landuse presets should be structured as Highways/Streets/--- and landuse should be structured Geography/Land Use/---
+            </p>
+            <ul>
+                <li>Primary</li>
+                <li>Seconday</li>
+                <li>Tertiary</li>
+                <li>Residential</li>
+                <li>Trunk</li>
+                <li>Motorway</li>
+                <li>Railwawy</li>
+                <li>Commercial (landuse)</li>
+                <li>Residential (landuse)</li>
+                <li>Leisure (search "leisure" directly in the search string search bar)</li>
+            </ul>
+            <img src="tutorial4.png" alt="JOSM popup map" width="800" height="420">
+
+            <p>
+                Press search, after a short moment the preset will be searched and selected in <em>red</em>, copy the selection with control "c". Click "file" in top left and then "new layer".
+            </p>
+            <img src="tutorial5.png" alt="JOSM popup map" width="800" height="420">
+
+            <p>
+                After moving to the new layer (layer should have a green tick) paste the content into the layer. Sometimes the pasted objects may be misaligned, move the object back into place by dragging as best as possible. Repeat until all layers are collected
+            </p>
+            <img src="tutorial6.png" alt="JOSM popup map" width="800" height="420">
+            <p>
+                Right click on the layer and click save (don't use control "s") and save the file as an OSM file.
+            </p>
+            <img src="tutorial7.png" alt="JOSM popup map" width="800" height="420">
+            <p>
+                Finally, to save the JOSM session, press control, shift, alt, "s" and click save as.
+            </p>
+
+        <h2 id="QGIS">3.QGIS</h2>
+            <p>Due to issues with importing, OSM files could not be imported directly into Rhino using Elk, we instead will use QGIS to conver to a .DXF file type</p>
+
+            <p>
+                Open QGIS and drag the saved OSM file into the workspace. After opening, right-click on the line layer with the same color and navigate to export, save as.
+            </p>
+            <img src="tutorial8.png" alt="JOSM popup map" width="800" height="420">
+            <p>Change the file type to AutoCad DXF and click ok. This file could now be imported directly into Rhino, the vertical scaling will likely be misaligned and will need to be adjusted in rhino.</p>
+            <img src="tutorial9.png" alt="JOSM popup map" width="800" height="420">
+
+        <h2 id="QGIS TOPOGRAPHY">4.QGIS topography</h2>
+            <p>We will also need the topography for the respective cities, for the STRM basemap we will use <a href="https://earthexplorer.usgs.gov/">USGS</a>. Before we can download any map data we will first need an account (top right).</p>
+
+            <p>
+                After using the map interface to navigate to the desired area, click the "use map" button
+            </p>
+            <img src="tutorial10.png" alt="JOSM popup map" width="800" height="420">
+
+            <p>
+                Navigate on the top left bar to "Data Sets", drop down "digital elevation" and tick "STRM 1 Arc-second global".
+            </p>
+            <img src="tutorial11.png" alt="JOSM popup map" width="800" height="420">
+
+            <p>Scroll to the bottom and click "results"</p>
+            <img src="tutorial12.png" alt="JOSM popup map" width="800" height="420">
+
+            <p>Preview the STRM area by clicking the foot icon. Select the appropriate sections and then click the download icon.</p>
+            <img src="tutorial13.png" alt="JOSM popup map" width="800" height="420">
+
+            <p>
+                Dowload the BIL 1 Arc-second option.
+            </p>
+            <img src="tutorial14.png" alt="JOSM popup map" width="800" height="420">
+
+            <p>After the file is downloaded, extract the file and drag the .bil file into the QGIS workspace, this should produce a black and white basemap.</p>
+            <img src="tutorial15.png" alt="JOSM popup map" width="800" height="420">
+            <p>Navigate to "Raster", "Extract", "Contours"</p>
+            <img src="tutorial16.png" alt="JOSM popup map" width="800" height="420">
+            <p>Adjust the export settings, interval between contour lines should be near 10 (refer to existing drawings for density reference). For coastlines, repeat the same process but set "interval betwen contour lines" to 5000 and "offset from zero relative to which to interperet interval" to 0.1</p>
+            <img src="tutorial17.png" alt="JOSM popup map" width="800" height="420">
+            <p>After the extraction is complete, right click the layer and export as DXF as done before, these contours could now be imported directly into rhino.</p>
+
+        </p>
     </body>
 </html>
