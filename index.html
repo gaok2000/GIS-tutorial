@@ -14,6 +14,7 @@
             <li><a href="#JOSM">JOSM</a></li>
             <li><a href="#QGIS">QGIS</a></li>
             <li><a href="#QGIS TOPOGRAPHY">QGIS topography</a></li>
+            <li><a href="#RHINO">Rhino trail lines and graphics</a></li>
             </nav>
         </ol>
 
@@ -121,5 +122,33 @@
             <p>After the extraction is complete, right click the layer and export as DXF as done before, these contours could now be imported directly into rhino.</p>
 
         </p>
+
+        <h2 id="RHINO">5.Rhino trail lines and graphics</h2>
+            <p>After importing and seperating all layers, the graphics need to be adjusted. The layer graphics should follow the lineweights and colors specified below</p>
+            <ul>
+                <li>subway-#FF01F0 .5</li>
+                <li>trunk/motor-#E33D34.7</li>
+                <li>primary-#E33D34 .5</li>
+                <li>secondary-#E33D34 .25</li>
+                <li>minorstreets-#E33D34 default</li>
+                <li>water obj-#DDDFCD</li>
+                <li>grid-#B87669 default</li>
+                <li>topo-#6F3D31 defualt</li>
+                <li><em>zoning</em></li>
+                <li>residential-#C6B4A4</li>
+                <li>leisure-#EBE9BC</li>
+                <li>commercial-#DCD3DF</li>
+                <li>cross size .106 km</li>
+
+            </ul>
+
+            <p>
+                After adjusting the lineweights annd colors, the rail/ subway lines need to be remade into crosses, download the grasshopper script from <a href="https://drive.google.com/file/d/1-VQzGB17RKFWZduJMf1FTp93AU8IozAe/view?usp=sharing">here</a>.
+            </p>
+            <p>Before opening grasshopper, make a cross object that will be repeated using the script, the cross size should be .106km after being scaled</p>
+            <p>Open the grasshopper script and right click the "object Geo", select multiple and choose the cross. Then right click "Rail", select multiple, and choose the rail lines.</p>
+            <img src="tutorial18.png" alt="JOSM popup map" width="800" height="420">
+            <p>Finally, right click the "Orient" node and bake, select the layer you want the objects to be baked into and press ok</p>
+            <img src="tutorial19.png" alt="JOSM popup map" width="800" height="420">
     </body>
 </html>
